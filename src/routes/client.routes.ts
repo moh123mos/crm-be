@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { Router, type Router as RouterType } from 'express';
 import { body } from 'express-validator';
 import {
   getAllClients,
@@ -8,7 +8,7 @@ import {
 } from '../controllers/client.controller';
 import { handleValidationErrors } from '../middleware/validate';
 
-const router = Router();
+const router: RouterType = Router();
 
 router
   .route('/')
