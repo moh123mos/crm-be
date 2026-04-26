@@ -1,4 +1,5 @@
-import { Router, type Router as RouterType } from 'express';
+import { type Router as RouterType } from 'express';
+import { Router } from 'express';
 import { body } from 'express-validator';
 import {
   getAllClients,
@@ -17,7 +18,8 @@ router
     [
       body('name').notEmpty().withMessage('Name is required').trim(),
       body('phone').notEmpty().withMessage('Phone is required').trim(),
-      body('email').optional().isEmail().withMessage('Invalid email').trim(),
+      body('email').optional({ values: 'falsy' }).isEmail().withMessage('Invalid email').trim(),
+      body('address').optional().trim(),
       body('notes').optional().trim(),
     ],
     handleValidationErrors,
@@ -30,7 +32,8 @@ router
     [
       body('name').optional().trim(),
       body('phone').optional().trim(),
-      body('email').optional().isEmail().withMessage('Invalid email').trim(),
+      body('email').optional({ values: 'falsy' }).isEmail().withMessage('Invalid email').trim(),
+      body('address').optional().trim(),
       body('notes').optional().trim(),
     ],
     handleValidationErrors,
