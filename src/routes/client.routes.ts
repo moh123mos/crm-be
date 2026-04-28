@@ -6,10 +6,16 @@ import {
   createClient,
   updateClient,
   deleteClient,
+  exportClients,
+  importClients,
 } from '../controllers/client.controller';
 import { handleValidationErrors } from '../middleware/validate';
 
 const router: RouterType = Router();
+
+router.route('/export').get(exportClients);
+
+router.route('/import').post(importClients);
 
 router
   .route('/')
