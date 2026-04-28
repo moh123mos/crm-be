@@ -118,8 +118,8 @@ export const createClient = async (req: Request, res: Response): Promise<void> =
       return;
     }
 
-    const { name, phone, email, notes } = req.body;
-    const client = await Client.create({ name, phone, email, notes });
+    const { name, phone, email, address, company_name, notes } = req.body;
+    const client = await Client.create({ name, phone, email, address, company_name, notes });
 
     res.status(201).json({
       success: true,
@@ -138,11 +138,11 @@ export const createClient = async (req: Request, res: Response): Promise<void> =
 export const updateClient = async (req: Request, res: Response): Promise<void> => {
   try {
     const { id } = req.params;
-    const { name, phone, email, notes } = req.body;
+    const { name, phone, email, address, company_name, notes } = req.body;
 
     const client = await Client.findByIdAndUpdate(
       id,
-      { name, phone, email, notes },
+      { name, phone, email, address, company_name, notes },
       { new: true, runValidators: true }
     );
 

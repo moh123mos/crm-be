@@ -5,6 +5,7 @@ export interface IClient extends Document {
   phone: string;
   email?: string;
   address?: string;
+  company_name?: string;
   notes?: string;
   createdAt: Date;
   updatedAt: Date;
@@ -28,6 +29,10 @@ const ClientSchema: Schema = new Schema(
       trim: true,
     },
     address: {
+      type: String,
+      trim: true,
+    },
+    company_name: {
       type: String,
       trim: true,
     },
